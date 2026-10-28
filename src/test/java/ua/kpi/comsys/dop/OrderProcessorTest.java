@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class OrderProcessorTest {
@@ -57,5 +58,13 @@ public class OrderProcessorTest {
                 """;
 
         assertEquals(expected, result);
+    }
+    @Test 
+    public void TestStatusNull(){
+        OrderProcessor processor = new OrderProcessor();
+        
+        assertThrows(
+        IllegalArgumentException.class,
+        () -> processor.process(null));
     }
 }
